@@ -62,19 +62,21 @@ Nous avons mit en place plusieurs expériences pour tenter de ralentir ou d'éra
 
 Comme première expérience nous avons décidé de confiner la population. Pour ce faire nous divisons les valeurs de vx et vy par deux, puis par trois et enfin par cinq. Ce qui nous ramène à trois tests que nous appellons "confinement leger", "confinement moyen" et "confinement strict". Ceci entraine une réduction des interactions entre les agents. On cherche à connaître quel niveau de confinement permettrait d'éradiquer la maladie et sur quelle durée il faudrai le mettre en place.
 
-<p align="center">
-<image src="./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png"   style="width: 420px; padding-top: 30px; padding-bottom: 30px; " >
+<div style="display: flex; padding-top: 30px; padding-bottom: 30px;"> 
+<image src="./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png"   style="width: 320px; padding-right: 10px" >
+
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Partial_confinement.png" style = "width: 320px; padding-left: 10px ">
+
+</div>
+<p align="center"> 
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Strict_confinement.png" style = "width: 320px; padding-bottom: 20px;">
 </p>
 
 Grace à ce premier léger confinement, nous avons considérablement ralentit la vitesse de propagation de la maladie. Mais dans le temps, le nombre moyen d'agents malades tend à être le même que dans la simulation sans confinement.
 
-<p align="center"><image src = "./Courbes/1000_agents_1_contaminé_5_ans/Partial_confinement.png" style = "width: 420px; padding-bottom: 30px; padding-top: 30px; "></p>
-
 La deuxième expérience de confinement nous a permis de repasser en dessous du seuil de 25% d'agents contaminés. On remarque donc on ralentissemnent encore plus flagrant de la vitesse de propagation de la maladie.
 
-<p align="center">
-<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Strict_confinement.png" style = "width: 420px; padding-bottom: 30px; padding-top: 30px; ">
-</p>
+Et enfin, avec le confinement strict,
 
 2. Respect des gestes barrières
 
