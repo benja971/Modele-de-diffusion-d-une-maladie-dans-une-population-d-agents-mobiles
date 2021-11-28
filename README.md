@@ -33,23 +33,38 @@ Nos agents sont représentés par des cercles de coordonnées (x, y) et de rayon
 
 Il n'existe qu'un seul type d'interaction entre nos agents. C'est l'interaction de contagion. Lorsqu'un agent est contaminé, il peut infecter d'autres agents mais ne peut plus être contaminé. Pour qu'un agent sain se fasse contaminé, il doit respecter certaines conditions. Il doit être un rayon de contamination (ir) défini. Il doit être sain, ne pas être immunisé et ne pas être vacciné.
 
-## Exprériences et résultats
+<div style="page-break-after: always;"></div>
+
+## Exprériences, résultats et limites
 
 Dans toutes nos simulations nous utilisons un nombre d'agents fixé à 1000, un nombre d'agents contaminés au temps zéro fixé à 1 et un degré de contamination à 3.5%.
 
-Avant de commencer à endiguer la maladie, nous avons simuler l'évolution de celle-ci sans mesures de restrictions. Voici le résultat obtenu:
+Avant de commencer les tests pour endiguer la maladie, nous avons simuler l'évolution de celle-ci sans mesures de restrictions. Voici le résultat obtenu:
 
-![Natural immunity only](./Courbes/1000_agents_1_contaminé_5_ans/Natural_immunity_only.png)
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Natural_immunity_only.png" style = "width: 320px; transform: translateX(50%); padding-top: 50px; padding-bottom: 50px">
 
-On observe des vagues de guérisons et de contaminations qui s'étendent jusqu'à la fin de la simulation. Ces vagues sont dues au fait que nos agents obtinnent une immunité naturelle temporaire après chaque guérison.
+On observe des vagues de guérisons et de contaminations qui s'étendent jusqu'à la fin de la simulation. Ces vagues sont dues au fait que nos agents obtiennent une immunité naturelle temporaire après chaque guérison.
 
-### Exprériences, résultats et limites
+<div style="page-break-after: always;"></div>
 
-Nous avons mit en place plusieurs expériences pour tenter de ralentir ou d'éradiquer la maladie. Pour chaque expérience, nous avons conserver les mêmes paramètres pour la simulation et répéter les simulations 5 fois pour réduire les incertitudes dues à l'aléatoire.
+Nous avons mit en place plusieurs expériences pour tenter de ralentir ou d'éradiquer la maladie. Pour chaque expérience, nous avons conserver les mêmes paramètres pour la simulation et réitéré 5 fois. Nous utilisons la moyenne de ces simulations pour réduire les incertitudes dues à l'aléatoire.
+
+1. Confinement
 
 Comme première expérience nous avons décidé de confiner la population. Pour ce faire nous divisons les valeurs de vx et vy par deux, puis par trois et enfin par cinq. Ce qui nous ramène à trois tests que nous appellons "confinement leger", "confinement moyen" et "confinement strict". Ceci entraine une réduction des interactions entre les agents. On cherche à connaître quel niveau de confinement permettrait d'éradiquer la maladie et sur quelle durée il faudrai le mettre en place.
 
+<div style = "display: flex; gap: 15px; padding-top: 50px">
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png" style = "width: 320px">
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png" style = "width: 320px">
+</div>
+
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png" style = "width: 320px; transform: translate(50%, 5%); padding-bottom: 50px;">
+
+2. Respect des gestes barrières
+
 Dans un deuxieme temps, nous avons décidé de mettre en place un respect des gestes barrières suivant. Cette méthode cherche à réduire la probabilité qu'un agent contaminé transmette la maladie à un autre agent lors de leur rencontre. Pour ce faire, nous avons mit en place trois intensités: "Basics barrier gestures", "Mediums barrier gestures" et "Heavys barrier gestures" qui réduisent par deux, trois et cinq la probabilité d'infection. Dans ce cas, on veut savoir jusqu'à quel niveau les gestes barrières peuvent ralentir la maladie.
+
+3. Vaccination
 
 Nous avons ensuite instauré un cycle de vaccination. En effet, dans la simulation, chaque jour, nous vaccinons un nombre d'agents définits au préalable.Le vaccin donne une imunité plus longue que celle obtenue naturellement. Au seins même de cette expérience nous avons pu tester plusieurs choses. Dans un premier temps, les agents n'effectuent qu'une seule vaccination qui les imunisent un certain temps mais finissent par attraper la maladie à la fin de leur prériode de vaccination.
 

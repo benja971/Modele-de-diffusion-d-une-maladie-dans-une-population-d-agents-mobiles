@@ -92,7 +92,7 @@ class Agent():
             self.vaccinate = True
             t = randint(180, 240)
             self.end_vaccination_time = time + t
-            self.dejaetevaccine = True
+            # self.dejaetevaccine = True
             vaccinateds.append(self)
 
     def remove_immunity(self, container, time):

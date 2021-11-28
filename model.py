@@ -66,9 +66,9 @@ def main(conf, gestesB, nbr_vacc, history, t):
 
 if __name__ == "__main__":
 
-    names = ["Natural_immunity_only", "Light_confinement", "Partial_confinement", "Strict_confinement", "Basics_barrier_gestures",
-             "Mediums_barrier_gestures", "Heavys_barrier_gestures", "Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
-    # names = ["Vaccin01_repeat", "Vaccin03_repeat", "Vaccin04_repeat", "Vaccin05_repeat"]
+    # names = ["Natural_immunity_only", "Light_confinement", "Partial_confinement", "Strict_confinement", "Basics_barrier_gestures",
+    #          "Mediums_barrier_gestures", "Heavys_barrier_gestures", "Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
+    names = ["Vaccin01_repeat", "Vaccin03_repeat", "Vaccin04_repeat", "Vaccin05_repeat"]
     # names = ["Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
     # names = ["Light_confinement", "Partial_confinement", "Strict_confinement"]
 
