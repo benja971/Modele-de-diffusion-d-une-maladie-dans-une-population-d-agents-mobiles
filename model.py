@@ -3,6 +3,7 @@ from container import Container
 from random import randint, choice, sample
 import numpy as np
 import matplotlib.pyplot as plt
+from time import time
 
 def main(name, conf, gestesB, nbr_vacc):
 	# Initialisation
@@ -12,7 +13,7 @@ def main(name, conf, gestesB, nbr_vacc):
 
 	confinement = conf
 	gestesBarrieres = gestesB
-	container.agents = [Agent(i, randint(10, w-10), randint(10, h-10), randint(10, 20)//confinement, randint(10, 20)//confinement, 0.035/gestesBarrieres) for i in range(1000)]
+	container.agents = [Agent(i, randint(10, w-10), randint(10, h-10), randint(-20, 20) // confinement, randint(-20, 20) // confinement, 0.035/gestesBarrieres) for i in range(1000)]
 
 	patient0 = choice(container.agents)
 
@@ -21,24 +22,24 @@ def main(name, conf, gestesB, nbr_vacc):
 	patient0.get_infected(0, container)
 	i = 0
 
-	infected_history = []
-	healthy_history = []
-	vaccinated_history = []
-	immune_history = []
-
-
 	# t = int(input("Nombre de tours : "))
 	t = 1825
+
+	infected_history = [None] * t
+	healthy_history = [None] * t
+	vaccinated_history = [None] * t
+	immune_history = [None] * t
+
+
 	while i < t:
 		nbr_v = nbr_vacc
-		i += 1
 		tours = 0
 		# print("{}/{}".format(i, t), end="    \r")
 
-		infected_history.append(len(container.infecteds)//5)
-		healthy_history.append(len(container.healthys)//5)
-		vaccinated_history.append(len(container.vaccinateds)//5)
-		immune_history.append(len(container.immunes)//5)
+		infected_history[i] = len(container.infecteds)/5
+		healthy_history[i] = len(container.healthys)/5
+		vaccinated_history[i] = len(container.vaccinateds)/5
+		immune_history[i] = len(container.immunes)/5
 
 		for agent in container.agents:	
 			tours += 1
@@ -62,6 +63,8 @@ def main(name, conf, gestesB, nbr_vacc):
 
 		container.vaccine_people(sample(l, nbr_v), i)
 
+		i += 1
+
 		# print("time: {}, infecteds: {}, healthys: {}, len(l): {} nbr_v/j: {}, vaccinates: {}, tours: {}".format(i, len(container.infecteds), len(container.healthys), len(l), nbr_v, len(container.vaccinateds),tours), end="                                              \r")
 
 	sainsmoinsimmunes = []
@@ -82,19 +85,22 @@ def main(name, conf, gestesB, nbr_vacc):
 	plt.xlabel("Time")
 	plt.ylabel("Number of agents")
 	# plt.show()
-	plt.savefig("./Courbes/{}.png".format(name))
+	plt.savefig("./Courbes/1000_agents_1_contaminé_5_ans/{}.png".format(name))
 	plt.close()
 
 if __name__ == "__main__":
 	
-	# names = ["Natural_immunity_only", "Light_confinement", "Partial_confinement", "Strict_confinement", "Basics_barrier_gestures", "Mediums_barrier_gestures", "Heavys_barrier_gestures", "Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
+	names = ["Natural_immunity_only", "Light_confinement", "Partial_confinement", "Strict_confinement", "Basics_barrier_gestures", "Mediums_barrier_gestures", "Heavys_barrier_gestures", "Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
 	# names = ["Vaccin01_repeat", "Vaccin03_repeat", "Vaccin04_repeat", "Vaccin05_repeat"]
 	# names = ["Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
-	names = ["Light_confinement", "Partial_confinement", "Strict_confinement"]
+	# names = ["Light_confinement", "Partial_confinement", "Strict_confinement"]
 
 	confinement = 1
 	gestesBarrieres = 1
 	nbr_vacc = 0
+
+	# start time count
+	start = time()
 
 	for name in names:
 		print(name)
@@ -171,3 +177,7 @@ if __name__ == "__main__":
 
 		for j in range(5):
 			main(name, confinement, gestesBarrieres, nbr_vacc)
+
+	# end time count
+	end = time()
+	print("\nExecution time: {}".format(end - start))
