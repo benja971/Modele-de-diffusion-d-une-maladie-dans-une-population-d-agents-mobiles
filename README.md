@@ -65,7 +65,7 @@ Comme première expérience nous avons décidé de confiner la population. Pour 
 <div style="display: flex; padding-top: 30px; padding-bottom: 30px;"> 
 <image src="./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png"   style="width: 320px; padding-right: 10px" >
 
-<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Partial_confinement.png" style = "width: 320px; padding-left: 10px ">
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Partial_confinement.png" style = "width: 320px; padding-left: 50% ">
 
 </div>
 <p align="center"> 
