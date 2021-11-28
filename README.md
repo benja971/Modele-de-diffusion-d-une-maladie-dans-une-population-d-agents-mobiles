@@ -1,6 +1,6 @@
-<h1 style="text-align: center; ">Modèle de diffusion d'une maladie dans une population d'agents mobiles</h1>
+<h1 align = "center" style="color: red;">Modèle de diffusion d'une maladie dans une population d'agents mobiles</h1>
 
-<h2 style="text-align: center; ">Sommaire</h2>
+<h2 align = "center">Sommaire</h2>
 
 -   Introduction
 -   Présentation du modèle
