@@ -1,7 +1,3 @@
-```diff
-- test
-```
-
 <h1 align = "center" >Modèle de diffusion d'une maladie dans une population d'agents mobiles</h1>
 
 <h2 align = "center">Sommaire</h2>
@@ -17,7 +13,11 @@
 
 <div style="page-break-after: always;"></div>
 
+<u>
+
 ## Présentation du modèle
+
+</u>
 
 ### Définition des variables
 
@@ -39,14 +39,19 @@ Il n'existe qu'un seul type d'interaction entre nos agents. C'est l'interaction 
 
 <div style="page-break-after: always;"></div>
 
+<u>
+
 ## Exprériences, résultats et limites
+
+</u>
 
 Dans toutes nos simulations nous utilisons un nombre d'agents fixé à 1000, un nombre d'agents contaminés au temps zéro fixé à 1 et un degré de contamination à 3.5%.
 
 Avant de commencer les tests pour endiguer la maladie, nous avons simuler l'évolution de celle-ci sans mesures de restrictions. Voici le résultat obtenu:
 
-<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Natural_immunity_only.png" style = "width: 320px; transform: translateX(50%); padding-top: 50px; padding-bottom: 50px">
-
+<p align="center">
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Natural_immunity_only.png" style = "width: 420px; padding-top: 30px; padding-bottom: 30px">
+</p>
 On observe des vagues de guérisons et de contaminations qui s'étendent jusqu'à la fin de la simulation. Ces vagues sont dues au fait que nos agents obtiennent une immunité naturelle temporaire après chaque guérison.
 
 <div style="page-break-after: always;"></div>
@@ -57,12 +62,19 @@ Nous avons mit en place plusieurs expériences pour tenter de ralentir ou d'éra
 
 Comme première expérience nous avons décidé de confiner la population. Pour ce faire nous divisons les valeurs de vx et vy par deux, puis par trois et enfin par cinq. Ce qui nous ramène à trois tests que nous appellons "confinement leger", "confinement moyen" et "confinement strict". Ceci entraine une réduction des interactions entre les agents. On cherche à connaître quel niveau de confinement permettrait d'éradiquer la maladie et sur quelle durée il faudrai le mettre en place.
 
-<div style = "display: flex; gap: 15px; padding-top: 50px">
-<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png" style = "width: 320px">
-<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png" style = "width: 320px">
-</div>
+<p align="center">
+<image src="./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png"   style="width: 420px; padding-top: 30px; padding-bottom: 30px; " >
+</p>
 
-<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png" style = "width: 320px; transform: translate(50%, 5%); padding-bottom: 50px;">
+Grace à ce premier léger confinement, nous avons considérablement ralentit la vitesse de propagation de la maladie. Mais dans le temps, le nombre moyen d'agents malades tend à être le même que dans la simulation sans confinement.
+
+<p align="center"><image src = "./Courbes/1000_agents_1_contaminé_5_ans/Partial_confinement.png" style = "width: 420px; padding-bottom: 30px; padding-top: 30px; "></p>
+
+La deuxième expérience de confinement nous a permis de repasser en dessous du seuil de 25% d'agents contaminés. On remarque donc on ralentissemnent encore plus flagrant de la vitesse de propagation de la maladie.
+
+<p align="center">
+<image src = "./Courbes/1000_agents_1_contaminé_5_ans/Strict_confinement.png" style = "width: 420px; padding-bottom: 30px; padding-top: 30px; ">
+</p>
 
 2. Respect des gestes barrières
 
