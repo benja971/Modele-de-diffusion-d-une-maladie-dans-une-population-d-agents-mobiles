@@ -39,16 +39,18 @@ Dans toutes nos simulations nous utilisons un nombre d'agents fixé à 1000, un 
 
 Avant de commencer à endiguer la maladie, nous avons simuler l'évolution de celle-ci sans mesures de restrictions. Voici le résultat obtenu:
 
-![Natural immunity only](./Courbes/1000_agents_1_contaminé_5_ans/natural_immunity_only.png)
+![Natural immunity only](./Courbes/1000_agents_1_contaminé_5_ans/Natural_immunity_only.png)
 
 On observe des vagues de guérisons et de contaminations qui s'étendent jusqu'à la fin de la simulation. Ces vagues sont dues au fait que nos agents obtinnent une immunité naturelle temporaire après chaque guérison.
 
-### Exprériences et résultats
+### Exprériences, résultats et limites
 
 Nous avons mit en place plusieurs expériences pour tenter de ralentir ou d'éradiquer la maladie. Pour chaque expérience, nous avons conserver les mêmes paramètres pour la simulation et répéter les simulations 5 fois pour réduire les incertitudes dues à l'aléatoire.
 
-Comme première expérience nous avons décidé de confiner la population. Pour ce faire nous divisons les valeurs de vx et vy par deux, puis par 3 et enfin par 5. Ce qui nous ramène à trois tests que nous appellons "confinement leger", "confinement moyen" et "confinement strict". Ceci entraine une réduction des interactions entre les agents. On cherche à savoir quel niveau de confinement permettrait d'éradiquer la maladie et sur quelle durée il faudrai le mettre en place. Nous avons donc trois résultats:
+Comme première expérience nous avons décidé de confiner la population. Pour ce faire nous divisons les valeurs de vx et vy par deux, puis par trois et enfin par cinq. Ce qui nous ramène à trois tests que nous appellons "confinement leger", "confinement moyen" et "confinement strict". Ceci entraine une réduction des interactions entre les agents. On cherche à connaître quel niveau de confinement permettrait d'éradiquer la maladie et sur quelle durée il faudrai le mettre en place.
 
-Dans un deuxieme temps, nous avons décidé de mettre en place un respect des gestes barrières suivant. Nous avons mit en place trois types de gestes barrières: "Basics barrier gestures", "Mediums barrier gestures" et "Heavys barrier gestures". Ces trois types de gestes barrières ont une influence sur les interactions entre les agents. Nous avons donc trois résultats:
+Dans un deuxieme temps, nous avons décidé de mettre en place un respect des gestes barrières suivant. Cette méthode cherche à réduire la probabilité qu'un agent contaminé transmette la maladie à un autre agent lors de leur rencontre. Pour ce faire, nous avons mit en place trois intensités: "Basics barrier gestures", "Mediums barrier gestures" et "Heavys barrier gestures" qui réduisent par deux, trois et cinq la probabilité d'infection. Dans ce cas, on veut savoir jusqu'à quel niveau les gestes barrières peuvent ralentir la maladie.
 
--   La mise en place d'un vaccin
+Nous avons ensuite instauré un cycle de vaccination. En effet, dans la simulation, chaque jour, nous vaccinons un nombre d'agents définits au préalable.Le vaccin donne une imunité plus longue que celle obtenue naturellement. Au seins même de cette expérience nous avons pu tester plusieurs choses. Dans un premier temps, les agents n'effectuent qu'une seule vaccination qui les imunisent un certain temps mais finissent par attraper la maladie à la fin de leur prériode de vaccination.
+
+Par la suite, nous avons implémenté les rappels de vaccins. Nous revaccinons les agents dès lors que leur vaccin ne fait plus effet. On regarde donc le seuil minimal de personnes à vacciner par jour pour que la maladie soit éradiquée.

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from time import time
 
 
-def main(name, conf, gestesB, nbr_vacc, history, t):
+def main(conf, gestesB, nbr_vacc, history, t):
     # Initialisation
 
     w, h = 5000, 5000
@@ -14,8 +14,9 @@ def main(name, conf, gestesB, nbr_vacc, history, t):
 
     confinement = conf
     gestesBarrieres = gestesB
-    container.agents = [Agent(i, randint(10, w-10), randint(10, h-10), randint(-20, 20) //
-                              confinement, randint(-20, 20) // confinement, 0.035/gestesBarrieres) for i in range(1000)]
+    container.agents = [Agent(i, randint(10, w-10), randint(10, h-10), randint(-20, 20) // confinement, randint(-20, 20) // confinement, 0.035/gestesBarrieres) for i in range(1000)]
+
+    # print(len(container.agents) - len(container.immunes))
 
     patient0 = choice(container.agents)
 
@@ -29,10 +30,10 @@ def main(name, conf, gestesB, nbr_vacc, history, t):
         tours = 0
         # print("{}/{}".format(i, t), end="    \r")
 
-        history["infected_history"][i] = len(container.infecteds)/5
-        history["healthy_history"][i] = len(container.healthys)/5
-        history["vaccinated_history"][i] = len(container.vaccinateds)/5
-        history["immune_history"][i] = len(container.immunes)/5
+        history["infected_history"][i] += len(container.infecteds)/5
+        history["healthy_history"][i] += len(container.healthys)/5
+        history["vaccinated_history"][i] += len(container.vaccinateds)/5
+        history["immune_history"][i] += len(container.immunes)/5
 
         for agent in container.agents:
             tours += 1
@@ -58,7 +59,7 @@ def main(name, conf, gestesB, nbr_vacc, history, t):
 
         i += 1
 
-        # print("time: {}, infecteds: {}, healthys: {}, len(l): {} nbr_v/j: {}, vaccinates: {}, tours: {}".format(i, len(container.infecteds), len(container.healthys), len(l), nbr_v, len(container.vaccinateds),tours), end="                                              \r")
+        # print("time: {}, infecteds: {}, healthys: {}, len(l): {} nbr_v/j: {}, vaccinates: {}, tours: {}".format(i, len(container.infecteds), len(container.healthys), len(l), nbr_v, len(container.vaccinateds), tours), end="\r")
 
     # print(sum(infected_history))
 
@@ -85,11 +86,11 @@ if __name__ == "__main__":
         print(name)
 
         history = {
-            "infected_history": [None] * t,
-            "healthy_history": [None] * t,
-            "vaccinated_history": [None] * t,
-            "immune_history": [None] * t,
-            "sainsmoinsimmune": [None] * t,
+            "infected_history": [0] * t,
+            "healthy_history": [0] * t,
+            "vaccinated_history": [0] * t,
+            "immune_history": [0] * t,
+            "sainsmoinsimmune": [0] * t,
 
         }
 
@@ -164,7 +165,7 @@ if __name__ == "__main__":
             nbr_vacc = 5
 
         for j in range(5):
-            main(name, confinement, gestesBarrieres, nbr_vacc, history, t)
+            main(confinement, gestesBarrieres, nbr_vacc, history, t)
 
         for i in range(len(history["healthy_history"])):
             history["sainsmoinsimmune"][i] = history["healthy_history"][i] - \
