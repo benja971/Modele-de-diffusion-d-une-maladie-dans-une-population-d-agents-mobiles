@@ -18,11 +18,14 @@ def main(conf, gestesB, nbr_vacc, history, t):
 
     # print(len(container.agents) - len(container.immunes))
 
-    patient0 = choice(container.agents)
+    # patient0 = choice(container.agents)
+    patients0 = sample(container.agents, 100)
 
     container.healthys = [*container.agents]
 
-    patient0.get_infected(0, container)
+    for patient in patients0:
+        patient.get_infected(0, container)
+
     i = 0
 
     while i < t:
@@ -67,10 +70,12 @@ def main(conf, gestesB, nbr_vacc, history, t):
 if __name__ == "__main__":
 
     # names = ["Natural_immunity_only", "Light_confinement", "Partial_confinement", "Strict_confinement", "Basics_barrier_gestures",
-    #          "Mediums_barrier_gestures", "Heavys_barrier_gestures", "Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
-    names = ["Vaccin01_repeat", "Vaccin03_repeat", "Vaccin04_repeat", "Vaccin05_repeat"]
+            #  "Mediums_barrier_gestures", "Heavys_barrier_gestures", "Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
+    # names = ["Vaccin01_repeat", "Vaccin03_repeat", "Vaccin04_repeat", "Vaccin05_repeat"]
     # names = ["Vaccin01", "Vaccin03", "Vaccin04", "Vaccin05"]
     # names = ["Light_confinement", "Partial_confinement", "Strict_confinement"]
+    # names = ["Light_confinement_and_medium_barrier_gestures"]
+    names = ["Mediums_barrier_gestures_and_vaccin03_repeat"]
 
     confinement = 1
     gestesBarrieres = 1
@@ -94,7 +99,17 @@ if __name__ == "__main__":
 
         }
 
-        if name == "Light_confinement":
+        if name == "Light_confinement_and_medium_barrier_gestures":
+            confinement = 2
+            gestesBarrieres = 3
+            nbr_vacc = 0
+
+        elif name == "Mediums_barrier_gestures_and_vaccin03_repeat":
+            confinement = 1
+            gestesBarrieres = 3
+            nbr_vacc = 3
+
+        elif name == "Light_confinement":
             confinement = 2
             gestesBarrieres = 1
             nbr_vacc = 0
@@ -186,7 +201,7 @@ if __name__ == "__main__":
         plt.xlabel("Time")
         plt.ylabel("Number of agents")
         plt.savefig(
-            "./Courbes/1000_agents_1_contaminé_5_ans/{}.png".format(name))
+            "./Courbes/1000_agents_100_contaminé_5_ans/{}.png".format(name))
         plt.close()
 
 # end time count
