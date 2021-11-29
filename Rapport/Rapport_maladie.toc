@@ -1,0 +1,11 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {A}Présentation du modèle}{2}{}%
+\contentsline {subsection}{\numberline {A.1}Définition des variables}{2}{}%
+\contentsline {subsection}{\numberline {A.2}Présentation des agents}{2}{}%
+\contentsline {subsection}{\numberline {A.3}Définition des intéractions}{2}{}%
+\contentsline {section}{\numberline {B}Exprériences, résultats et limites}{3}{}%
+\contentsline {subsection}{\numberline {B.1}État initial}{3}{}%
+\contentsline {subsection}{\numberline {B.2}Confinement}{4}{}%
+\contentsline {subsection}{\numberline {B.3}Respect des gestes barrières}{6}{}%
+\contentsline {subsection}{\numberline {B.4}Vaccination}{9}{}%
+\contentsline {subsection}{\numberline {B.5}Combinaisons de méthodes}{10}{}%

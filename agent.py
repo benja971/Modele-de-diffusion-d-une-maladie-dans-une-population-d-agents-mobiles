@@ -13,7 +13,8 @@ class Agent():
         self.radius = 10
         self.infected = False
         self.infection_time = 0
-        self.infection_duration = randint(90, 150)
+        self.infection_duration = randint(15, 25)
+        # self.infection_duration = randint(90, 150)
         self.infection_probability = pdei
         self.infection_radius = 100
         self.recovered = False
