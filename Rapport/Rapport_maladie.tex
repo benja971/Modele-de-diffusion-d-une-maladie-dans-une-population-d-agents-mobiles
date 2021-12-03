@@ -27,29 +27,33 @@
 \newpage
 \section{Introduction}
 
-Après la découverte d'une nouvelle maladie, on cherche à étudier son comportement sur une population d'agents mobiles.
-Dans un second temps, on étudiera différentes stratégies pour endiguer sa propagation. On veut donc, à la fin,
-connaitre le ou les moyens les plus efficaces pour éviter que la maladie ne se propage dans la population.
+After the discovery of a new disease, we seek to study its behavior on a population of mobile agents.
+Secondly, we will study different strategies to contain its spread. So we want, at the end,
+know the most effective means (s) to prevent the disease from spreading in the population.
 
 \section{Model presentation}
 \subsection{Variables definition}
 
-La première étape consiste à définir les différents paramètres de la simulation. Nous aurons donc:
+The first step is to define the different parameters of the simulation. We will have:
 \begin{itemize}
-	\item une durée de simulation
-	\item un nombre d'agents
-	\item un nombre d'agents contaminés au temps zéro
-	\item un degrés de confinement de la population
-	\item un degrés de de respect des gestes barrières
+	\item a simulation duration,
+	\item a number of agents,
+	\item a number of agents contaminated at time zero,
+	\item a degree of confinement of the population,
+	\item a degree of respect for barrier gestures.
 \end{itemize}
 
 \subsection{Agents presentation}
 
-Nos agents sont représentés par des cercles de coordonnées (x, y) et de rayon (r). Ils possèdent un état de contamination booléen, une probabilité de contamination (p), un état de guérison booléen et un état d'imunité boolean. Ces états sont modifiés par les interactions entre les agents et des durées définies qui cherchent à être les plus proches de la réalité. Les agents évoluent dans un monde carré de dimension (w, h) et sont placés aléatoirement dans ce monde avec une vitesse (vx, vy), elle aussi aléatoire.
+Our agents are represented by circles of coordinates (x, y) and radius (r). They have a Boolean contamination state, a contamination probability (p), a Boolean healing state and
+a boolean impunity state. These states are modified by interactions between agents and defined durations which seek to be closest to reality. The agents evolve in a square world
+of dimension (w, h) and are placed randomly in this world with a speed (vx, vy), also random.
 
 \subsection{interactions definition}
 
-Il n'existe qu'un seul type d'interaction entre nos agents. C'est l'interaction de contagion. Lorsqu'un agent est contaminé, il peut infecter d'autres agents mais ne peut plus être contaminé. Pour qu'un agent sain se fasse contaminé, il doit respecter certaines conditions. Il doit être un rayon de contamination (ir) défini. Il doit être sain, ne pas être immunisé et ne pas être vacciné.
+There is only one type of interaction between our agents. It is the contagion interaction. When an agent is contaminated, it can infect other agents but can no longer be
+contaminated. For a healthy agent to become contaminated, it must meet certain conditions. It must be a defined contamination radius (ir). He must be healthy, not be immune
+and not be vaccinated.
 
 \begin{figure}[h]
 	\centering
@@ -81,6 +85,8 @@ Here are the results:
 
 \end{figure}
 
+\newpage
+
 The infecteds evolution is represented by a succesion of contamination and healing waves that spread until the end of the simulation. These waves are due to the fact that our agents
 gain a temporary immunity after each healing.
 
@@ -89,169 +95,176 @@ gain a temporary immunity after each healing.
 There are various expériences that we have done trying to contain or eradicate the disease. For each of these experiments, we simulated it four times with the same initial conditions
 and used the average of the results as a representative result to reduce the uncertainty due to randomness.
 
-\newpage
 
 \subsection{Confinement}
-Comme première expérience nous avons décidé de confiner la population. Pour ce faire nous divisons les
-valeurs de vx et vy par deux, puis par trois et enfin par cinq. Ce qui nous ramène à trois tests que nous
-appelons respectivement "confinement léger", "confinement moyen" et "confinement strict" par rapport à leur
-taux de limitation. Ce taux fera baisser la possibilité de déplacement des agents jusqu'à la quasi-immobilité
-lorsque ce dernier vaut cinq. Ceci entraine donc une réduction des interactions entre les agents qui devrait
-limiter la dispersion de la maladie. On veut savoir si cette réduction est suffisante pour éradiquer la maladie. Et
-si oui, quel taux faut-il mettre en place et sûr combien de temps. Nous avons donc réalisé les simulations
-suivantes:
+
+As a first experiment we decided to confine the population. To do this we divide the
+values of vx and vy by two, then by three and finally by five. Which brings us back to three tests that we
+call respectively "light confinement", "medium confinement" and "strict confinement" in relation to their
+limitation rate. This rate will reduce the possibility of moving for the agents until almost immobility
+when the rate is near to five. This therefore leads to a reduction in interactions between agents which should
+limit the spread of the disease. We want to know if this reduction is sufficient to eradicate the disease. And
+if so, what rate should be set up and sure how long. We therefore carried out the simulations
+following:
 
 \begin{figure}[h]
 	\centering
 	\subfloat[\centering Light confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png} }}
 	\qquad
 	\subfloat[\centering Basic confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Partial_confinement.png} }}
+\end{figure}
+\begin{figure}[h]
 	\centering
 	\subfloat[\centering Heavy confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Strict_confinement.png} }}
 	\qquad
-	\caption{Représentations graphique de l'évolution de l'état\\ de la population en fonction du taux de confinement}
-
+	\caption{Graphical representations of the evolution of the state \\ of the population as a function of the confinement rate}
 \end{figure}
 \newpage
 
-Les graphiques ci-dessus représentent l'évolution de l'état des agents au cours de la simulation (temps en jour)en fonction du taux de confinement.
-On observe que la méthode de confinement est une facon très efficace de ralentir le déplacement de la maladie au sein de la population. On le constate clairement
-sur les graphiques du confinement léger et moyen. En effet, le pic de contamination initial est beaucoup moins important que celui de la simulation sans restrictions.
-Enfin, en se basant sur la courbe du confinement stricte, on confirme que cette méthode, malgré un degré très important de limitations, n'est pas suffisante pour éradiquer la maladie.
-On peut donc envisager de combiner cette dernière avec une autre méthode. Mais avant cela, nous avons testé si mettre en place un confinement de la population alors que l'épidémie' s'est déja propagée.
-Nous obtenons donc les résultats suivants:
+The graphs above represent the evolution of the state of the agents during the simulation according to the rate of confinement.
+It is observed that the method of confinement is a very effective way of slowing the movement of the disease within the population. We can clearly see it
+on the graphs of light and medium confinement. Indeed, the initial contamination peak is much less important than the one of the simulation without restrictions.
+Finally, based on the strict confinement curve, it is confirmed that this method, despite a very significant degree of limitations, is not sufficient to eradicate the disease.
+We can therefore consider combining it with another method. But before that, we tested whether to set up a confinement of the population while the epidemic has already spread.
+We obtained the following results:
 
-\begin{figure}[h]
+\begin{figure}[!h]
 	\centering
 	\subfloat[\centering Light confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Light_confinement.png} }}
 	\qquad
 	\subfloat[\centering Basic confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Partial_confinement.png} }}
+\end{figure}
+\begin{figure}[!h]
 	\centering
 	\subfloat[\centering Heavy confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Strict_confinement.png} }}
 	\qquad
-	\caption{Représentations graphique de l'évolution de l'état\\ de la population en fonction du taux de confinement}
+	\caption{Graphical representations of the evolution of the state \\ of the population as a function of the confinement rate}
 
 \end{figure}
 
-Grace à ce deuxième set de simmulations, il apparait que lorsque le confinement est décrété dès les premiers cas, on remarque qu'il n'y a aucun pic de contamination quelque soit le taux de confinement.
-En comparaison avec les simulation ou le confinement débute avec 10\% de la population infectée, dans lequelles le confinement ne permet que
-de dimminuer le premier pic de contamination. Sur le long terme le confinement quelque soit soit sont inensité, permet de stabilser le nombre d'infectés journalier.
-
 \newpage
 
-\subsection{Respect des gestes barrières}
-Dans un deuxième temps, nous avons décidé de mettre en place un respect des gestes barrières. Cette méthode cherche à réduire la probabilité qu'un agent contaminé transmette la maladie à un autre agent
-lors de leur rencontre. Pour ce faire, nous avons mit en place trois intensités: "Basics barrier gestures", "Mediums barrier gestures" et "Heavys barrier gestures" qui réduisent par deux, trois et cinq
-la probabilité d'infection. Dans ce cas, on veut savoir jusqu'à quel niveau les gestes barrières peuvent ralentir la maladie.
+Thanks to this second set of simulations, it appears that when confinement is decreed from the first cases, we notice that there is no peak of contamination whatever the rate of confinement.
+In comparison with simulations where confinement begins with 10\% of the infected population, in which confinement only allows
+to reduce the first peak of contamination. In the long term, containment, whatever its intensity, stabilizes the number of daily infected.
+
+
+\subsection{Respect for barrier gestures}
+
+Secondly, we decided to implement a respect for barrier gestures. This method seeks to reduce the probability that a contaminated agent transmite the disease to another agent
+when they meet. To do this, we have set up three intensities: "Basics barrier gestures", "Mediums barrier gestures" and "Heavys barrier gestures" which reduce by two, three and five
+the probability of infection. In this case, we want to know to what level the barrier gestures can slow down the disease.
 
 \begin{figure}[h]
 	\centering
-	\subfloat[\centering Light confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Light_confinement.png} }}
+	\subfloat[\centering Basics barrier gestures]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Basics_barrier_gestures.png} }}
 	\qquad
-	\subfloat[\centering Basic confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Partial_confinement.png} }}
+	\subfloat[\centering Mediums barrier gestures]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Mediums_barrier_gestures.png} }}
 	\centering
-	\subfloat[\centering Heavy confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Strict_confinement.png} }}
+	\subfloat[\centering Heavys barrier gestures]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Heavys_barrier_gestures.png} }}
 	\qquad
-	\caption{Représentations graphique de l'évolution de l'état\\ de la population en fonction du taux de gestes barrières}
+	\caption{Graphic representations of the evolution of the state \\ of the population according to the rate of barrier gestures}
 
 \end{figure}
 
 \newpage
 
-Ici, nous représentons l'évolution de l'état des agents au fil du temps (en jour) en fonction du degrés de respect de la population pour les gestes barrières.
-On voit clairement que les gestes barrières sont très efficaces pour réduire la transmission de la maladie même si les agents ne les suivent pas de manière stricte comme le montre le graphique
-"gestes barrières basiques".
-Grace au courbes, il est clair que les gestes barrières sont une très bonne
-pratique pour réduire la transmission de la maladie. De plus, comme le montre le graphique"gestes barrières strictes", si respectés sérieusement et dès les premiers jours, une épidémie peut facilement
-être évitée. Mais on peut aussi se demander si cette méthode serait aussi utile, si mise en place alors que l'épidémie est déjà en cours. Voici donc les résultats obtenus pour ce cas:
+Here, we represent the evolution of the state of the agents over time according to the degree of respect of the population for the barrier gestures.
+We can clearly see that the barrier gestures are very effective in reducing the transmission of the disease even if the agents do not follow them strictly as shown in the graph.
+"basic barrier gestures".
+Thanks to the curves, it is clear that barrier gestures are a very good
+convenient to reduce disease transmission. In addition, as shown in the graph "strict barrier gestures", if respected seriously and from the first days, an epidemic can easily
+be avoided. But we can also wonder if this method would also be useful, if implemented while the epidemic is already underway. Here are the results obtained for this case:
 
 \begin{figure}[h]
 	\centering
-	\subfloat[\centering Light confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Light_confinement.png} }}
+	\subfloat[\centering Light barrier gestures]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Basics_barrier_gestures.png} }}
 	\qquad
-	\subfloat[\centering Basic confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Partial_confinement.png} }}
+	\subfloat[\centering Basic barrier gestures]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Mediums_barrier_gestures.png} }}
 	\centering
-	\subfloat[\centering Heavy confinement]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Strict_confinement.png} }}
+	\subfloat[\centering Heavy barrier gestures]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Heavys_barrier_gestures.png} }}
 	\qquad
-	\caption{Représentations graphique de l'évolution de l'état\\ de la population en fonction du taux de confinement}
+	\caption{Graphical representations of the evolution of the state \\ of the population as a function of the rate of barrier gestures}
 
 \end{figure}
 
 \newpage
 
-Dans le cas présent, le développement de la maladie est atténué par les gestes barrières. Cependant, comme pour l'expérience précédente, à part lorsque les gestes barrières sont fortement respectés,
-l'épdiémie n'est pas évitée.
+In the present case, the development of the disease is attenuated by the barrier gestures. However, as for the previous experience, except when barrier gestures are strongly respected,
+the epidemic is not avoided.
 
 \newpage
 
 \subsection{Vaccination}
 
-Nous avons ensuite instauré un cycle de vaccination. En effet, dans la simulation, chaque jour, nous vaccinons un nombre d'agents définits au préalable.Le vaccin donne une imunité plus longue que celle obtenue
-naturellement. Au seins même de cette expérience nous avons pu tester plusieurs choses. Dans un premier temps, les agents n'effectuent qu'une seule vaccination qui les imunisent un certain temps mais finissent
-par attraper la maladie à la fin de leur prériode de vaccination.
+We then set up a vaccination cycle. In fact, in the simulation, each day, we vaccinate a number of agents defined in advance.The vaccine gives a longer immunity than that obtained
+naturally. In the midst of this experience, we were able to test several things. At first, the agents perform only one vaccination which immunizes them for a while but ends
+by catching the disease at the end of their vaccination period.
 
 \begin{figure}[h]
 	\centering
-	\subfloat[\centering 1 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin01.png} }}
+	\subfloat[\centering 1 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin01.png} }}
 	\qquad
-	\subfloat[\centering 3 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin03.png} }}
+	\subfloat[\centering 3 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin03.png} }}
 	\centering
-	\subfloat[\centering 4 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin04.png} }}
+	\subfloat[\centering 4 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin04.png} }}
 	\qquad
-	\caption{Représentations graphique de l'évolution de l'état\\ de la population en fonction du nombre de nouveaux vaccinés par jours}
+	\caption{Graphical representations of the evolution of the state \\ of the population according to the number of new vaccinated per day}
 
 \end{figure}
 
-C'est graphiques représentent l'évolution de l'état de la population en fonction du temps (en jours) pour un nombre de personnes qui se font vacciner chaque jour.
-On observe que le fait d'avoir une partie de la population vaccinée est une bonne pratique pour réduire la transmission de la maladie. En effet, le pic de vaccination permet de
-fortement retardé le pic de contamination initial.
-\newpage
-De plus, on peut voir que nombre de personnes qui se vaccinent chaque jour est un facteur important pour retarder le début de l'épidémie.
+These graphs represent the evolution of the state of the population as a function of time for a number of people who are vaccinated each day.
+It is observed that having part of the population vaccinated is a good practice to reduce the transmission of the disease. Indeed, the peak of vaccination] makes it possible to
+greatly delayed the initial contamination peak.
 
-Par la suite, nous avons implémenté les rappels de vaccins. Nous revaccinons les agents dès lors que leur vaccin ne fait plus effet. On regarde donc le seuil minimal de personnes à vacciner par jour
-pour que la maladie soit éradiquée.
+\newpage
+
+In addition, we can see that the number of people who get vaccinated every day is an important factor to delay the explosion of the epidemic.
+
+Subsequently, we implemented the vaccine boosters. We revaccinate agents when their vaccine no longer works. We therefore look at the minimum threshold of people to be vaccinated per day
+for the disease to be eradicated.
 
 \begin{figure}[h]
 	\centering
-	\subfloat[\centering 1 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin01.png} }}
+	\subfloat[\centering 1 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin01.png} }}
 	\qquad
-	\subfloat[\centering 3 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin03.png} }}
+	\subfloat[\centering 3 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin03.png} }}
 	\centering
-	\subfloat[\centering 4 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin04.png} }}
+	\subfloat[\centering 4 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Vaccin04.png} }}
 	\qquad
-	\caption{Représentations graphique de l'évolution de l'état\\ de la population en fonction du nombre de nouveaux vaccinés par jours}
+	\caption{Graphical representations of the evolution of the state \\ of the population according to the number of new vaccinated per day}
 
 \end{figure}
 
-Ces graphiques montrant l'évolution de l'état de la population en fonction du temps (en jours) pour un nombre de personnes qui se font vacciner chaque jour démontrent bien que
-se faire vacciner régulièrement permet de très facilement éradiquer la maladie. En effet, on observe que dès trois personnes vaccinées suplémentaires par jour, la maladie ne dépasse pas les 15\% d'infectés.
-Et qu'il suffit de vacciner quatres personnes par jour pour éradiquer la maladie au bout de deux ans pour une population de 1000 agents.
+These graphs showing the evolution of the state of the population as a function of time for a number of people who are dayly vaccinated clearly show that
+getting vaccinated regularly makes it very easy to eradicate the disease. In fact, it is observed that from three additional people vaccinated per day, the disease does not exceed 15% of infected.
+and that is enough to vaccinate four people per day to eradicate the disease after two years for a population of 1000 agents.
 
 \newpage
 
-Nous avons réitéré l'expérience "vaccin" mais avec un nombre d'agents contaminés à 100 à t0 pour simuler une épidémie en cours.
+We repeated the "vaccine" experiment, but with a number of agents contaminated at 100 at t0 to simulate an epidemic in progress.
 
 \begin{figure}[h]
 	\centering
-	\subfloat[\centering 1 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Vaccin01_repeat.png} }}
+	\subfloat[\centering 1 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Vaccin01_repeat.png} }}
 	\qquad
-	\subfloat[\centering 3 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Vaccin03_repeat.png} }}
+	\subfloat[\centering 3 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Vaccin03_repeat.png} }}
 	\centering
-	\subfloat[\centering 4 vaccination par jour]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Vaccin04_repeat.png} }}
+	\subfloat[\centering 4 dayly vaccination]{{\includegraphics[width=6cm]{../Courbes/1000_agents_100_contaminé_5_ans/Vaccin04_repeat.png} }}
 	\qquad
-	\caption{Représentations graphique de l'évolution de l'état\\ de la population en fonction du nombre de nouveaux vaccinés par jours}
+	\caption{Graphical representations of the evolution of the state \\ of the population according to the number of new vaccinated per day}
 
 \end{figure}
 
-On arrive aux mêmes conclusions qu'à l'expérience précédente, le vaccin est la meilleure pratique pour éradiquer la maladie et il faut vacciner au moins trois personnes par jour pour
-que les résultats soient réellement significatifs.
+We come to the same conclusions as in the previous experience, the vaccine is the best practice to eradicate the disease and it is necessary to vaccinate at least three people per day to
+that the results are really significant.
 
 \newpage
 
-\subsection{Combinaisons de méthodes}
+\subsection{combination of methods}
 
-Enfin, après avoir présenté les différentes facon d'entraver la propagation d'une maladie au sein d'une population, nous avons décidé de tester différentes combinaisons de méthodes.
-Nous présentons donc deux d'entre elles :
+Finally, after presenting the different ways of hindering the spread of a disease within a population, we decided to test different combinations of methods.
+We therefore present two of them:
 
 \begin{itemize}
 	\item Light confinement and medium barrier gestures
@@ -261,18 +274,19 @@ Nous présentons donc deux d'entre elles :
 \begin{figure}[h]
 	\subfloat[\centering Light confinement and medium barrier gestures]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Light_confinement_and_medium_barrier_gestures.png} }}
 	\subfloat[\centering Mediums barrier gestures and vaccin 3 people per day with vaccin booster]{{\includegraphics[width=6cm]{../Courbes/1000_agents_1_contaminé_5_ans/Mediums_barrier_gestures_and_vaccin03_repeat.png} }}
-	\caption{Représentations graphique de l'évolution de l'état\\ de la population en fonction de la combinaison de méthodes}
+	\caption{Graphical representations of the evolution of the state \\ of the population according to the combination of methods}
 \end{figure}
 
-Étant donné que les méthodes combinées ici ont fait leurs preuvent individuellement, nous avons donc pu voir que les résultats sont significatifs. Cependant, pour le light confinement and le medium barrier gestures, on vois
-que la maladie est plus difficile à éradiquer. Ces deux méthodes étant plus utilisée pour ralentir la propagation que pour l'éradiquer, on observe que la maladie progresse tout de même.
-Tandis que Mediums barrier gestures and vaccin 3 people per day with vaccin booster ne permet même pas à la maladie d'évoluer.
+Since the methods combined here have proved their worth individually, we have therefore been able to see that the results are significant. However, for light confinement and medium barrier gestures, we see
+that the disease is more difficult to eradicate. Since these two methods are used more to slow the spread than to eradicate it, we observe that the disease is progressing all the same.
+While Mediums barrier gestures and vaccine 3 people per day with vaccine booster does not even allow the disease to progress.
 
 \newpage
 
 \section{Conclusion}
 
-Après cette baterie de tests, nous sommes en mesure de définir la facon la plus efficace de contrer cette nouvelle maladie. Tout d'habord, si cette dernière est remarquée suffisement tôt,
-un confinement light avec une population qui fait attention aux gestes de barrière de base, permettrait de fortement ralentir sa propagation en attendant le développemnt d'un vaccin qui permettrait de l'éradiquer .
+After this battery of tests, we are able to define the most effective way to counter this new disease. First of all, if the latter is noticed early enough,
+light confinement with a population that pays attention to basic barrier gestures, would greatly slow down its spread while awaiting the development of a vaccine that would eradicate it.
+
 \end{document}
 

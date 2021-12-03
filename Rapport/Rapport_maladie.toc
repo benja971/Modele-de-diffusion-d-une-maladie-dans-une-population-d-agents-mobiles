@@ -4,10 +4,10 @@
 \contentsline {subsection}{\numberline {B.1}Variables definition}{2}{}%
 \contentsline {subsection}{\numberline {B.2}Agents presentation}{2}{}%
 \contentsline {subsection}{\numberline {B.3}interactions definition}{2}{}%
-\contentsline {section}{\numberline {C}Experiments, results and limitations}{4}{}%
-\contentsline {subsection}{\numberline {C.1}initial state}{4}{}%
-\contentsline {subsection}{\numberline {C.2}Confinement}{5}{}%
-\contentsline {subsection}{\numberline {C.3}Respect des gestes barrières}{8}{}%
-\contentsline {subsection}{\numberline {C.4}Vaccination}{11}{}%
-\contentsline {subsection}{\numberline {C.5}Combinaisons de méthodes}{14}{}%
-\contentsline {section}{\numberline {D}Conclusion}{15}{}%
+\contentsline {section}{\numberline {C}Experiments, results and limitations}{3}{}%
+\contentsline {subsection}{\numberline {C.1}initial state}{3}{}%
+\contentsline {subsection}{\numberline {C.2}Confinement}{4}{}%
+\contentsline {subsection}{\numberline {C.3}Respect for barrier gestures}{6}{}%
+\contentsline {subsection}{\numberline {C.4}Vaccination}{9}{}%
+\contentsline {subsection}{\numberline {C.5}combination of methods}{12}{}%
+\contentsline {section}{\numberline {D}Conclusion}{13}{}%
